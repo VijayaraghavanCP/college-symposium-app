@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>WELCOME TO XYZ COLLEGE MEGA SYMPOSIUM!!</h1>
+    <br>
+    <h2>PLEASE ENTER YOUR DETAILS FOR REGISTRATION</h2>
+    <form action="/home" method="POST">
+    <h3>Enter your name:</h3><input type="text" name="name" required>
+    <h3>Id:</h3><input type="text" name="id" required>
+    <h3>Pick your convenient date (from 11th AUG to 15th AUG) </h3><input type="date" name="date" required>
+    <h3>College Name:</h3>
+    <select name="college" id="collegename" required>
+        <option value="kec">Kongu engineering college</option>
+        <option value="bit">Bannari amman institute of technology</option>
+        <option value="skc">Sri krishna engineering college</option>
+        <option value="rct">Ramakrishna college of technology</option>
+        <option value="cit">Coimbatore institute of technology</option>
+        <option value="psg">PSG college</option>
+        <option value="kce">Karpagam college of engineering</option>
+        <option value="kct">Kumaraguru college of technology</option>
+        <option value="others">Others.......</option>
+
+    </select>
+    
+        <input type="submit" value="SUBMIT">
+    </form>
+
+    
+</body>
+</html>

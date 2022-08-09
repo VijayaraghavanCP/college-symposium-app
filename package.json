@@ -1,0 +1,26 @@
+{
+  "name": "college-symposium",
+  "version": "1.0.0",
+  "description": "college event",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VijayaraghavanCP/college-symposium-app.git"
+  },
+  "author": "vijayaraghavan c p",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VijayaraghavanCP/college-symposium-app/issues"
+  },
+  "homepage": "https://github.com/VijayaraghavanCP/college-symposium-app#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19"
+  }
+}

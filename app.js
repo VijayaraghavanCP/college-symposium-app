@@ -2,6 +2,8 @@ const express=require('express');
 const mysql=require('mysql');
 const { dirname } = require('path');
 const app=express();
+app.set('view engine','ejs');
+app.set('views','views');
 const path=require('path');
 const bodyparser=require('body-parser');
 const encoder=bodyparser.urlencoded({extended:false});
@@ -35,8 +37,8 @@ const collegename=req.body.college;
 // console.log(date);
 
 
-if(date== '2022-08-11' ||date== '2022-08-12' ||date== '2022-08-13' ||date== '2022-08-14' ||date== '2022-08-15')
-{
+// if(date== '2022-08-11' ||date== '2022-08-12' ||date== '2022-08-13' ||date== '2022-08-14' ||date== '2022-08-15')
+// {
 const q1=`INSERT INTO details VALUES('${name}','${id}','${date}','${collegename}');`;
 connection.query(q1,function(err,res){
     if(err) throw err
@@ -46,10 +48,10 @@ connection.query(q1,function(err,res){
     }
 });
 res.sendFile(path.join(__dirname,'views','thankyou.html'));
-}
-else{
-    res.sendFile(path.join(__dirname,'views','incorrect.html'));
-}});
+});
+// else{
+//     res.sendFile(path.join(__dirname,'views','incorrect.html'));
+// }});
 
 
 // For admin ............................................................................................
@@ -77,16 +79,55 @@ connection.query(`SELECT * FROM admin WHERE username='${aname}' and password='${
 app.get('/admin/data/query',(req,res)=>{
     res.sendFile(path.join(__dirname,'views','query.html'));
 });
-app.post('/admin/data/query/display',encoder,(req,res)=>{
-    const q=req.body.name;
+app.post('/admin/data/query/getall',(req,res)=>{
+    const q='SELECT * from details';
     connection.query(q,function(error,result){
+        const result1=JSON.stringify(result);
+        
         if(result.length>0)
         {
-            console.log(result);
+            res.render('sendfile',{finalresult:result1});
+            
         }
         else throw error
     });
 });
+
+app.post('/admin/data/query/getdetailsbyname',encoder,(req,res)=>{
+    const name=req.body.name;
+    connection.query(`SELECT * FROM details WHERE student_name='${name}';`,function(error,result){
+        const result1=JSON.stringify(result);
+        if(result.length>0)
+        {
+            res.render('sendfile',{finalresult:result1});
+        }
+    });
+});
+
+app.post('/admin/data/query/getdetailsbyclgname',encoder,(req,res)=>{
+const collegename=req.body.name;
+connection.query(`SELECT * FROM details WHERE college_name='${collegename}';`,function(error,result){
+    const result1=JSON.stringify(result);
+    if(result.length>0)
+    {
+        res.render('sendfile',{finalresult:result1});
+    }
+});
+});
+
+app.post('/admin/data/query/getdetailsbyeventdate',encoder,(req,res)=>{
+    const event_date=req.body.date;
+    connection.query(`SELECT * FROM details WHERE event_date='${event_date}';`,function(error,result){
+        const result1=JSON.stringify(result);
+        if(result.length>0)
+        {
+            res.render('sendfile',{finalresult:result1});
+        }
+        else{
+            res.sendFile(path.join(__dirname,'views','incorrect.html'));
+        }
+    });
+    });
 // For admin............................................................................
 app.use((req,res)=>{
     res.status(404).sendFile(path.join(__dirname,'views','error.html'));

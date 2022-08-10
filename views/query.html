@@ -8,11 +8,34 @@
 </head>
 <body>
     <h1>HEY ADMIN!!!!!</h1>
-    <h1>Please enter your query</h1>
-    <form action="/admin/data/query/display" method="POST">
-        <input type="text" name="name">
+    <h1>To get details click on the respective button </h1>
+    <form action="/admin/data/query/getall" method="POST">
+        <h3>To display all the registered students</h3><input type="submit" value="getall">
+    </form>
+    <br>
+    <form action="/admin/data/query/getdetailsbyname" method="POST">
+        <h3>To display the details of student name:</h3><input type="text" name="name">
         <input type="submit" value="submit">
     </form>
+    <form action="/admin/data/query/getdetailsbyclgname" method="POST">
+        <h3>To display the details by college name:</h3><input type="text" name="name">
+        <input type="submit" value="submit">
+    </form>
+    <form action="/admin/data/query/getdetailsbyeventdate" method="POST">
+        <h3>To display the details by eventdate:</h3>
+        <input type="radio" name="date" value="2022-08-11" id="date">
+        <label for="date">2022-08-11</label><br>
+        <input type="radio" name="date" value="2022-08-12" id="date">
+        <label for="date">2022-08-12</label><br>
+        <input type="radio" name="date" value="2022-08-13" id="date">
+        <label for="date">2022-08-13</label><br>
+        <input type="radio" name="date" value="2022-08-14" id="date">
+        <label for="date">2022-08-14</label><br>
+        <input type="radio" name="date" value="2022-08-15" id="date">
+        <label for="date">2022-08-15</label><br>
+        <input type="submit" value="submit">
+    </form>
+
     
 </body>
 </html>

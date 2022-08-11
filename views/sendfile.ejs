@@ -9,6 +9,14 @@
 <body>
     <h1>Here is your detail</h1>
     
-    <h1><%= finalresult %></h1>
+    <!-- <h1><%= finalresult %></h1> -->
+    <% for (let results of finalresult){ %>
+        <h1>student_name:<%=results.student_name %></h1>
+        <h1>student_Id:<%=results.id %></h1>
+        <h1>event date:<%=results.event_date %></h1>
+        <h1>student's college_name::<%=results.college_name %></h1>
+        <hr>
+        <br>
+    <% } %>
 </body>
 </html>

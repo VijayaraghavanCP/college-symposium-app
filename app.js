@@ -82,11 +82,11 @@ app.get('/admin/data/query',(req,res)=>{
 app.post('/admin/data/query/getall',(req,res)=>{
     const q='SELECT * from details';
     connection.query(q,function(error,result){
-        const result1=JSON.stringify(result);
+        // const result1=JSON.stringify(result);
         
         if(result.length>0)
         {
-            res.render('sendfile',{finalresult:result1});
+            res.render('sendfile',{finalresult:result});
             
         }
         else throw error
@@ -96,10 +96,10 @@ app.post('/admin/data/query/getall',(req,res)=>{
 app.post('/admin/data/query/getdetailsbyname',encoder,(req,res)=>{
     const name=req.body.name;
     connection.query(`SELECT * FROM details WHERE student_name='${name}';`,function(error,result){
-        const result1=JSON.stringify(result);
+        // const result1=JSON.stringify(result);
         if(result.length>0)
         {
-            res.render('sendfile',{finalresult:result1});
+            res.render('sendfile',{finalresult:result});
         }
     });
 });
@@ -107,10 +107,10 @@ app.post('/admin/data/query/getdetailsbyname',encoder,(req,res)=>{
 app.post('/admin/data/query/getdetailsbyclgname',encoder,(req,res)=>{
 const collegename=req.body.name;
 connection.query(`SELECT * FROM details WHERE college_name='${collegename}';`,function(error,result){
-    const result1=JSON.stringify(result);
+    // const result1=JSON.stringify(result);
     if(result.length>0)
     {
-        res.render('sendfile',{finalresult:result1});
+        res.render('sendfile',{finalresult:result});
     }
 });
 });
@@ -118,10 +118,11 @@ connection.query(`SELECT * FROM details WHERE college_name='${collegename}';`,fu
 app.post('/admin/data/query/getdetailsbyeventdate',encoder,(req,res)=>{
     const event_date=req.body.date;
     connection.query(`SELECT * FROM details WHERE event_date='${event_date}';`,function(error,result){
-        const result1=JSON.stringify(result);
+        // const result1=JSON.stringify(result);
+        // console.log(result1);
         if(result.length>0)
         {
-            res.render('sendfile',{finalresult:result1});
+            res.render('sendfile',{finalresult:result});
         }
         else{
             res.sendFile(path.join(__dirname,'views','incorrect.html'));

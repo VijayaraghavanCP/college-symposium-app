@@ -95,7 +95,7 @@ app.post('/admin/data/query/getall',(req,res)=>{
 
 app.post('/admin/data/query/getdetailsbyname',encoder,(req,res)=>{
     const name=req.body.name;
-    connection.query(`SELECT * FROM details WHERE student_name='${name}';`,function(error,result){
+    connection.query(`SELECT * FROM details WHERE student_name like'${name}%';`,function(error,result){
         // const result1=JSON.stringify(result);
         if(result.length>0)
         {
